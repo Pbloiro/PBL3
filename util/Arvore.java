@@ -4,7 +4,7 @@ public class Arvore {
 	private Celula raiz;
 	private int size;
 	
-	private class Celula implements Element{//a classe implementa a interface element pra n�o acessar os
+	private class Celula implements Element{//a classe implementa a interface element pra não acessar os
 		private Object data;                //dados diretamente
 		private Celula pai;
 		private Celula noEsquerda;
@@ -49,6 +49,31 @@ public class Arvore {
 		}
 	}
 	
+	/*o metodo de inserir tá errado, pq não tá inserindo ordenado, tem que ser tipo isso:
+	
+	*  public void inserir(Node node, int valor) {
+        if(this.root == null){
+            this.root = new Node(valor);
+        } else {
+            if (valor < node.getValor()) {
+                if (node.getNoEsquerda() != null) { 
+                    inserir(node.getNoEsquerda(), valor); 
+                } else { 
+                    //Se nodo esquerdo vazio insere o novo no aqui 
+                    node.setNoEsquerda(new Node(valor)); 
+                } 
+                //Verifica se o valor a ser inserido é maior que o no corrente da árvore, se sim vai para subarvore direita 
+            } else if (valor > node.getValor()) { 
+                //Se tiver elemento no no direito continua a busca 
+                if (node.getNoDireita() != null) { 
+                    inserir(node.getNoDireita(), valor); 
+                } else {
+                    //Se nodo direito vazio insere o novo no aqui 
+                    node.setNoDireita(new Node(valor)); 
+                } 
+            }
+        }
+    } mas eu não sei como faz com objetos, vê se tu consegue fazer*/
 	public void addRaiz(Object o){
 		if(raiz == null){
 			raiz = new Celula(null, o);
@@ -81,8 +106,8 @@ public class Arvore {
 		((Celula) e).setData(o);
 	}
 	
-	public class Iterador implements Iterator{// o iterador � usado com fila, pra isso eu implementei ela 
-		private IFila fila = new Fila();	//e instanciei atrav�s da interface
+	public class Iterador implements Iterator{// o iterador é usado com fila, pra isso eu implementei ela 
+		private IFila fila = new Fila();	//e instanciei através da interface
 		
 		public Iterador(){
 			fila.inserirFinal(raiz);
