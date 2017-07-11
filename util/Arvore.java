@@ -86,7 +86,20 @@ public class Arvore {
 		size++;
 		return n;
 	}
-	
+	public boolean busca(Celula c, String chave){
+		if (c.getData() == null){ // Se não houver nada na celula.
+			return false; // A arvore ta vazia retorna false.				
+		if (((String) c.getData()).compareTo(chave) = 0) { // Se o data da celula for igual a chave de busca.
+			return true;			// A raiz é igual a chave, retorna true.
+		}
+		else if(((String) c.getData()).compareTo(chave) < 0){ // Se o data da celula for maior do que a chave de busca.
+			return busca(c.getNoEsquerda(),chave); // chamada recursiva passando o no da esquerda.
+		}
+		else{ //Se o data for menor do que a chave de busca 
+			return busca(c.getNoDireita(),chave); // chamada recursiva passando o no da direita.		
+		}
+
+	}
 	public void remove(Element e){
 		Celula n = (Celula) e;
 		
